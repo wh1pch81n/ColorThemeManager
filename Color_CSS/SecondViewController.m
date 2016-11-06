@@ -7,8 +7,16 @@
 //
 
 #import "SecondViewController.h"
+#import "StyleType.h"
+#import "Color_CSS-Swift.h"
+
+UIColor *colorWithStyleKey(DHColorKey key) {
+	return [DH_StyleKitManager colorWithStyleKey:key];
+}
 
 @interface SecondViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *secondView;
+@property (weak, nonatomic) IBOutlet UILabel *secondviewSubtitle;
 
 @end
 
@@ -16,7 +24,12 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+	[DH_StyleKitManager setStyle:[CloudStyleKit new]];
+
 	// Do any additional setup after loading the view, typically from a nib.
+	_secondView.textColor = [DH_StyleKitManager colorWithStyleKey:DHColorKey_Theme];
+	_secondView.textColor = [DH_StyleKitManager colorWithStyleKey:DHColorKey_DarkRed];
+	self.view.backgroundColor = colorWithStyleKey(DHColorKey_LightRed);
 }
 
 

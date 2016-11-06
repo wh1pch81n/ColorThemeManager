@@ -7,8 +7,10 @@
 //
 
 #import "FirstViewController.h"
+#import "Color_CSS-Swift.h"
 
 @interface FirstViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *firstView;
 
 @end
 
@@ -16,7 +18,10 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+	[DH_StyleKitManager setStyle:[AerisStyleKit new]];
 	// Do any additional setup after loading the view, typically from a nib.
+	
+	_firstView.textColor = [DH_StyleKitManager colorWithStyleKey:DHColorKey_Theme];
 }
 
 
