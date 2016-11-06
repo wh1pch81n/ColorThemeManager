@@ -20,14 +20,14 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	[DH_StyleKitManager setStyle:[CloudStyleKit new]];
+	[DH_StyleKitManager setStyle:[AerisStyleKit new]];
 
 	// Do any additional setup after loading the view, typically from a nib.
-	_secondView.textColor = [[[DH_StyleKitManager style] red] color];
+	_secondView.textColor = [DH_StyleKitManager style].color.red;
 	//_secondView.textColor = [DH_StyleKitManager colorWithStyleKey:DHColorKey_DarkRed];
-	self.view.backgroundColor = [DH_StyleKitManager style].green.color;
-	_secondView.font = [DH_StyleKitManager style].h1.font;
-	_secondviewSubtitle.font = [DH_StyleKitManager style].body.font;
+	self.view.backgroundColor = [DH_StyleKitManager style].color.green;
+	_secondView.font = [DH_StyleKitManager style].font.h1;
+	_secondviewSubtitle.font = [DH_StyleKitManager style].font.body;
 }
 
 

@@ -19,9 +19,9 @@ class ThirdViewController: UIViewController {
 		super.loadView()
 		DH_StyleKitManager.style = CloudStyleKit()
 		
-		view.backgroundColor = DH_StyleKitManager.style.red.color
+		view.backgroundColor = DH_StyleKitManager.style.color.red
 		view.layer.borderWidth = 10
-		view.layer.borderColor = DH_StyleKitManager.style.green.color.cgColor
+		view.layer.borderColor = DH_StyleKitManager.style.color.green.cgColor
 	}
 	
 }
