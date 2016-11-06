@@ -18,10 +18,12 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	[DH_StyleKitManager setStyle:[AerisStyleKit new]];
+	[DH_StyleKitManager setStyle:[CloudStyleKit new]];
 	// Do any additional setup after loading the view, typically from a nib.
 	
-	_firstView.textColor = [DH_StyleKitManager colorWithStyleKey:DHColorKey_Theme];
+	_firstView.textColor = [DH_StyleKitManager style].red.color;
+	self.view.backgroundColor = [DH_StyleKitManager style].green.color;
+	_firstView.font = [DH_StyleKitManager style].h1.font;
 }
 
 

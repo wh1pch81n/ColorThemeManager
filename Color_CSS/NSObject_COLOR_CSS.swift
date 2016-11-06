@@ -10,49 +10,50 @@ import UIKit
 
 final class DH_StyleKitManager: NSObject {
 	
-	public static var style: StyleKitProtocol = DefaultStyleKit()
+	public static var style = StyleKit()
 	
-	public static func color(styleKey: DHColorKey) -> UIColor? {
-		return style.color(styleKey: styleKey)
+	//public static func color(key: ColorStyleKitProtocol) -> UIColor {
+	//	return style.key.color
+	//}
+}
+
+public class ColorBox: NSObject {
+	public let color: UIColor
+	init(_ rawValue: UIColor) {
+		color = rawValue
 	}
 }
 
-@objc public protocol ColorKitProtocol: class {
-	func color(styleKey: DHColorKey) -> UIColor?
-}
-@objc public protocol FontKitProtocol: class {
-	func font(styleKey: DHFontKey) -> UIFont?
-}
-
-@objc public protocol StyleKitProtocol: class, ColorKitProtocol {
-}
-
-public class DefaultStyleKit: NSObject, StyleKitProtocol {
-	public func color(styleKey: DHColorKey) -> UIColor? {
-		return nil
+public class FontBox: NSObject {
+	public let font: UIFont
+	init(name: String, size: CGFloat) {
+		font = UIFont(name: name, size: size)!
 	}
 }
 
-public class AerisStyleKit: NSObject, StyleKitProtocol {
-	public func color(styleKey: DHColorKey) -> UIColor? {
-		switch styleKey {
-		case DHColorKey._Theme: return #colorLiteral(red: 1, green: 0.3179958648, blue: 0.388072145, alpha: 1)
-		
-		default:
-			return nil
-		}
-	}
+public class _ColorStyleKitProtocol: NSObject {
+	public var red: ColorBox { return ColorBox(.red) }
+	public var green: ColorBox { return ColorBox(.green) }
+	public var blue: ColorBox { return ColorBox(.blue) }
 }
 
-public class CloudStyleKit: NSObject, StyleKitProtocol {
-	public func color(styleKey: DHColorKey) -> UIColor? {
-		switch styleKey {
-		case DHColorKey._Theme: return #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
-		case DHColorKey._DarkRed: return #colorLiteral(red: 0.5237410946, green: 0.005209560587, blue: 0, alpha: 1)
-		case DHColorKey._Red: return #colorLiteral(red: 1, green: 0.009946824187, blue: 0, alpha: 1)
-		case DHColorKey._LightRed: return #colorLiteral(red: 1, green: 0.4909467775, blue: 0.5636061062, alpha: 1)
-		default:
-			return nil
-		}
-	}
+public class _FontStyleKitProtocol: _ColorStyleKitProtocol {
+	public var h1: FontBox { return FontBox(name: "Arial", size: 17) }
+	public var body: FontBox { return FontBox(name: "Arial", size: 14) }
+}
+
+// "Base class"
+public class StyleKit: _FontStyleKitProtocol {}
+
+// "Subclasses
+
+public class AerisStyleKit: StyleKit {
+	public override var red: ColorBox { return ColorBox(#colorLiteral(red: 1, green: 0.3179958648, blue: 0.388072145, alpha: 1)) }
+	public override var h1: FontBox { return FontBox(name: "Baskerville-Italic", size: 17) }
+}
+
+public class CloudStyleKit: StyleKit {
+	public override var red: ColorBox { return ColorBox(#colorLiteral(red: 0.5237410946, green: 0.005209560587, blue: 0, alpha: 1)) }
+	public override var h1: FontBox { return FontBox(name: "MarkerFelt-Wide", size: 17) }
+
 }
