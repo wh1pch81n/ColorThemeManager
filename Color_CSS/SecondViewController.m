@@ -9,7 +9,7 @@
 #import "SecondViewController.h"
 #import "StyleType.h"
 #import "Color_CSS-Swift.h"
-
+/*
 @interface SecondViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *secondView;
 @property (weak, nonatomic) IBOutlet UILabel *secondviewSubtitle;
@@ -20,14 +20,14 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	[DH_StyleKitManager setStyle:[AerisStyleKit new]];
+	//[DH_StyleKitManager setStyle:[AerisStyleKit new]];
 
 	// Do any additional setup after loading the view, typically from a nib.
-	_secondView.textColor = [DH_StyleKitManager style].color.red;
+	//_secondView.textColor = [DH_StyleKitManager style].color.red;
 	//_secondView.textColor = [DH_StyleKitManager colorWithStyleKey:DHColorKey_DarkRed];
-	self.view.backgroundColor = [DH_StyleKitManager style].color.green;
-	_secondView.font = [DH_StyleKitManager style].font.h1;
-	_secondviewSubtitle.font = [DH_StyleKitManager style].font.body;
+	//self.view.backgroundColor = [DH_StyleKitManager style].color.green;
+	//_secondView.font = [DH_StyleKitManager style].font.h1;
+	//_secondviewSubtitle.font = [DH_StyleKitManager style].font.body;
 }
 
 
@@ -38,3 +38,4 @@
 
 
 @end
+*/
